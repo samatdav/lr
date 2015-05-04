@@ -28,6 +28,9 @@ if (empty($_POST) === false) {
 			$errors[] = 'wrong u and p pair';
 
 		} else {
+			$_SESSION['user_id'] = $login;
+			header('Location: index.php');
+			exit();
 			// echo 'ok';
 
 		}

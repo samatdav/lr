@@ -9,30 +9,26 @@ include 'core/init.php';
 	<title>adsfads</title>
 </head>
 <body>
-<h1>home</h1>
-<p>asdf</p>
+
+
+<?php 
+// if (isset($_SESSION['user_id'])) {
+// 	echo 'Logged in';
+// } else {
+// 	echo 'Not logged in';
+// }
+
+if (logged_in() === true) {
+	// echo "Logged in";
+	include 'include/loggedin.php';
+} else {
+	// echo "Not logged";
+	include 'include/login_form.php';
+}
+include 'include/user_count.php'
+?>
 
 
 
-<h2>loginwid</h2>
-<form action="login.php" method="post">
-	<ul>
-		<li>
-			Username:
-			<input type="text" name="username">
-		</li>
-		<li>
-			Password:
-			<input type="password" name="password">
-		</li>
-		<li>
-			Submit:
-			<input type="submit" value="Log in">
-		</li>
-		<li>
-			<a href="register.php">Register</a>
-		</li>
-	</ul>
-</form>
 </body>
 </html>
