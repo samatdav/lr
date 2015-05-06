@@ -1,4 +1,12 @@
 <?php
+function take_order($user_id, $order) {
+	$user_id = (int)$user_id;
+	mysql_query("UPDATE `users` SET `order` = '$order' WHERE user_id = $user_id");
+
+	// mysql_query("UPDATE users SET order = '$order' WHERE user_id = $user_id");
+}
+
+
 function register_user($register_data) {
 	array_walk($register_data, 'array_sanitize');
 	$register_data['password'] = md5($register_data['password']);
@@ -16,9 +24,9 @@ function register_user($register_data) {
 }
 
 
-function user_count() {
-	return mysql_result(mysql_query("SELECT COUNT(user_id) FROM users WHERE active = 1"), 0);
-}
+// function user_count() {
+// 	return mysql_result(mysql_query("SELECT COUNT(user_id) FROM users WHERE active = 1"), 0);
+// }
 
 function user_data($user_id) {
 	$data = array();
@@ -54,6 +62,37 @@ function user_data($user_id) {
 
 }
 
+function all_data() {
+	$all_data = array();
+
+	$func_num_args = func_num_args();
+	// echo $func_num_args;
+
+	$func_get_args = func_get_args();
+
+	if ($func_num_args > 1) {
+		unset($func_get_args[0]);
+
+
+		// $fields = '' . implode('`, `', $func_get_args) . '`';
+		$fields = '' . implode(', ', $func_get_args) . '';
+		// echo $fields;
+		// echo "SELECT $fields FROM users WHERE user_id = '$user_id'";
+
+		// die();
+		// $data = mysql_fetch_assoc(mysql_query("SELECT $fields FROM `users` WHERE `user_id` = $user_id"));
+		$data = mysql_fetch_assoc(mysql_query("SELECT $fields FROM users"));
+
+		// print_r($data);
+		// die();
+
+		return $all_data;
+	}
+	// print_r($func_get_args);
+
+}
+
+
 
 function logged_in() {
 	return (isset($_SESSION['user_id'])) ? true : false;
@@ -64,6 +103,10 @@ function user_exists($username) {
 	return (mysql_result(mysql_query("SELECT COUNT(user_id) FROM users WHERE username = '$username'"),0) == 1)? true : false;
 }
 
+function email_exists($email) {
+	$email = sanitize($email);
+	return (mysql_result(mysql_query("SELECT COUNT(user_id) FROM users WHERE email = '$email'"),0) == 1)? true : false;
+}
 
 function user_active($username) {
 	$username = sanitize($username);

@@ -8,14 +8,16 @@ require 'functions/users.php';
 
 if (logged_in() === true) {
 	$session_user_id = $_SESSION['user_id'];
-	$user_data = user_data($session_user_id, 'user_id', 'username', 'password', 'first_name', 'last_name', 'email');
+	$user_data = user_data($session_user_id, 'user_id', 'username');
+	$all_data = all_data();
+	// $user_data = user_data($session_user_id, 'user_id', 'username', 'password', 'first_name', 'last_name', 'email');
 	// echo $user_data['password'];
-	if (user_active($user_data['username']) === false) {
-		session_destroy();
-		header('Location: index.php');
-		exit();
+	// if (user_active($user_data['username']) === false) {
+	// 	session_destroy();
+	// 	header('Location: index.php');
+	// 	exit();
+	// }
 
-	}
 }
 
 

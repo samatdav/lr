@@ -1,34 +1,97 @@
 <?php
 include 'core/init.php';
 
-?>
+if (empty($_POST) === false) {
+	if (empty($errors) === true) {
 
-<!doctype <!DOCTYPE html>
-<html>
-<head>
-	<title>adsfads</title>
-</head>
-<body>
-
-
-<?php 
-// if (isset($_SESSION['user_id'])) {
-// 	echo 'Logged in';
-// } else {
-// 	echo 'Not logged in';
-// }
-
-if (logged_in() === true) {
-	// echo "Logged in";
-	include 'include/loggedin.php';
-} else {
-	// echo "Not logged";
-	include 'include/login_form.php';
+		// if (strlen($_POST['password']) < 6) {
+		// 	$errors[] = 'password too short';
+		// }
+	}
 }
-include 'include/user_count.php'
 ?>
 
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+	    <meta charset="utf-8">
+	    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+	    <link rel="stylesheet" type="text/css" href="css/bootstrap-select.css">
+	    <link href="css/css" rel="stylesheet" type="text/css">
+	    <link href="css/css(1)" rel="stylesheet" type="text/css">
+	    <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	    <link rel="stylesheet" type="text/css" href="css/style.css">
+	    <link rel="stylesheet" type="text/css" href="css/signin.css">
+	    <link rel="stylesheet" type="text/css" href="css/index.css">
+
+	    <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+	    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
+	    <script type="text/javascript" src="js/gmaps.js"></script>
+		<title>Express Food</title>
+	</head>
+
+	<body>
+	  <div class="header  navbar-fixed-top">
+        <nav class="navbar fluid-container">
+          <div class="navbar-header">
+
+          </div>
+          <div class="navbar-collapse collapse navbar-right">
+          </div>
+        </nav>      
+	  </div>
+
+	    <a href="#">
+            <img class="logo" id="logo_icon" src="img/icon_trans.png" alt="expfood">
+            <img class="logo" id="logo_text" src="img/logo_main.png" alt="expfood">
+            <?php
+	  		// echo $user_data['username'];
+	  		?>
+        </a>
+
+    <?php
+
+	if (isset($_GET['success']) && empty($_GET['success'])) {
+		echo "You have registered!";
+	} else {
+		if (empty($_POST) === false && empty($errors) === true) {
+			$register_data = array (
+				'username' => $_POST['email'],
+				'password' => $_POST['password'],
+				'email' => $_POST['email'],
+				'city' => $_POST['city'],
+				'street' => $_POST['street'],
+				'house' => $_POST['house'],
+			);
+
+			register_user($register_data);
+			// print_r($register_data);
+			header('Location: main.php');
+			exit();
 
 
+		} else if (empty($errors) === false) {
+			header('Location: index.php?again');
+			
+		}
+	?>
+
+    <a href="signin.php"><button class="signin btn btn-primary">Войти</button></a> 
+    <div class="input-wrap"><input autofocus id="pac-input" class="controls" type="text" placeholder="Введите свой адрес и нажмите Enter"></div>
+    <div id="map-canvas"></div>
+    <div id="map-words">
+    	<?php
+			if (isset($_GET['again']) && empty($_GET['again'])) {
+			include 'include/register_gmaps.php';
+
+			}
+    	?>
+    </div>
+	
+	<?php
+	}
+	?>
 </body>
 </html>
