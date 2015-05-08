@@ -439,12 +439,7 @@ div.camera-caption > a
 	display: inline;
 	padding: 0 4px;
 }
-.camera_thumbs_cont ul li > img {
-	border: 1px solid;
-	cursor: pointer;
-	margin-top: 5px;
-	vertical-align:bottom;
-}
+
 .camera_clear {
 	display: block;
 	clear: both;

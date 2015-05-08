@@ -1,11 +1,26 @@
 <?php
-function take_order($user_id, $order) {
+function fill_input($name) {
+	global $user_data;
+	if ($user_data[$name] !== 0 && $user_data[$name] !== '0' && $user_data[$name] !== 'undefined') {
+		echo $user_data[$name];
+
+	}
+}
+
+
+function take_order($user_id, $order, $total_cost) {
 	$user_id = (int)$user_id;
-	mysql_query("UPDATE `users` SET `order` = '$order' WHERE user_id = $user_id");
+	// mysql_query("UPDATE `users` SET `order` = '$order' WHERE user_id = $user_id");
+	mysql_query("INSERT INTO orders (html, user_id, total_cost) VALUES ('$order', '$user_id', '$total_cost')");
+	$orderList[] = $order; // НУЖНО ХРАНИТЬ В БАЗЕ ДАННЫХ А НЕ ПХП - СОЗДАТЬ ТАБЛИЦУ ORDERS
 
 	// mysql_query("UPDATE users SET order = '$order' WHERE user_id = $user_id");
 }
 
+function take_order_data($user_id, $first_name, $phone, $city, $street, $house, $extra) {
+	$user_id = (int)$user_id;
+	mysql_query("UPDATE `users` SET `first_name` = '$first_name', `phone` = '$phone', `city` = '$city', `street` = '$street', `house` = '$house', `extra` = '$extra' WHERE user_id = $user_id");
+}
 
 function register_user($register_data) {
 	array_walk($register_data, 'array_sanitize');
@@ -28,37 +43,19 @@ function register_user($register_data) {
 // 	return mysql_result(mysql_query("SELECT COUNT(user_id) FROM users WHERE active = 1"), 0);
 // }
 
+
+
 function user_data($user_id) {
 	$data = array();
 	$user_id = (int)$user_id;
-
 	$func_num_args = func_num_args();
-	// echo $func_num_args;
-
-
-	$func_get_args = func_get_args();
-
-
-	
+	$func_get_args = func_get_args();	
 	if ($func_num_args > 1) {
 		unset($func_get_args[0]);
-
-
-		// $fields = '' . implode('`, `', $func_get_args) . '`';
 		$fields = '' . implode(', ', $func_get_args) . '';
-		// echo $fields;
-		// echo "SELECT $fields FROM users WHERE user_id = '$user_id'";
-
-		// die();
-		// $data = mysql_fetch_assoc(mysql_query("SELECT $fields FROM `users` WHERE `user_id` = $user_id"));
 		$data = mysql_fetch_assoc(mysql_query("SELECT $fields FROM users WHERE user_id = $user_id"));
-
-		// print_r($data);
-		// die();
-
 		return $data;
 	}
-	// print_r($func_get_args);
 
 }
 

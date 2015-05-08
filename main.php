@@ -50,10 +50,10 @@ include 'core/init.php';
 					  		<img src="img/ver2.png">
 					  		Верный
 					  		<?php
-					  		echo $user_data['username'];
-					  		echo $session_user_id;
-					  		echo $user_data['user_id'];
-					  		echo output_errors($errors);
+					  		// echo $user_data['username'];
+					  		// echo $session_user_id;
+					  		// echo $user_data['user_id'];
+					  		// echo output_errors($errors);
 					  		?>
 					  </li>
 
@@ -71,7 +71,7 @@ include 'core/init.php';
                     <ul class="nav navbar-right cart">
                       <li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span id="cart-number">0</span></a>
-					<div class="cart-info dropdown-menu">
+					<div class="cart-info dropdown-menu" id="cart-items">
 						<table class="table">
 							<thead>
 							</thead>
@@ -105,17 +105,15 @@ include 'core/init.php';
 						  </table>
 
 						  <?php
-
-						  
-
-						  take_order($user_data['user_id'], $_POST['order']);
-						  
-						  header('Location: signin.php');
-
+							  if (empty($_POST) === false) {
+							  take_order($user_data['user_id'], $_POST['order'], $_POST['total_cost']);						  
+							  header('Location: order.php');
+							  }
 						  ?>
 
 						  <form class="form-group" method="post"> 
 							<div class="hidden"> <input type="text" name="order" id="inputOrder"> </div>
+							<div class="hidden"> <input type="text" name="total_cost" id="inputCost"> </div>
 							<input type="submit" class="checkout_button btn btn-primary" value="Order now"> 
 						  </form> 
 						  <!-- <div class="checkout">

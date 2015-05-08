@@ -2,14 +2,12 @@
 include 'core/init.php';
 // echo $user_data['order'];
 // echo $all_data;
-
-$sql = "SELECT `order` FROM `users`";
+$user_id = $user_data['user_id'];
+$sql = "SELECT `html` FROM `orders`";
 $result = mysql_query($sql) or die(mysql_error());
 
-$names = $ages = $blahs = array();
-
 while($row = mysql_fetch_assoc($result)) {
-    $order_all[] = $row['order'];
+    $order_all[] = $row['html'];
 
 }
 
@@ -45,8 +43,12 @@ while($row = mysql_fetch_assoc($result)) {
 
 
 	<?php
+	// output_orderList($orderList);
+	// echo output_orderList($orderList);
+	// echo count($orderList);
+
 	for ($x = 0; $x < count($order_all); $x++) {
-	    echo "<table class='table'> <thead> </thead> <tbody id='ordered-items'> $order_all[$x] </tbody> </table>";
+	    echo "<table class='table admin-table'> <thead> </thead> <tbody id='ordered-items'> $order_all[$x] </tbody> </table>";
 	}
 
 	?>
@@ -54,6 +56,20 @@ while($row = mysql_fetch_assoc($result)) {
 		
 </div>
 
+<style type="text/css">
+.page-container {
+	background-color: #faa;
+}
+img {
+	height: 100px;
+}
+.admin-table {
+	border-color: #f00;
+	border-width: 10px;
+	margin-bottom: 50px;
+	/*background-color: #faa;*/
+}
+</style>
 
 <script type="text/javascript" src="js/bootstrap-select.min.js"></script>
 <script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
