@@ -7,14 +7,21 @@ function fill_input($name) {
 	}
 }
 
+function fill_main() {
+	global $user_data;
+	if ($user_data['main'] !== '' && $user_data['main'] !== 'undefined') {
+		echo $user_data['main'];
 
-function take_order($user_id, $order, $total_cost) {
+	return ($user_data['main'] !== '' && $user_data['main'] !== 'undefined');
+
+	}
+}
+
+function take_order($user_id, $order, $total_cost, $main) {
 	$user_id = (int)$user_id;
 	// mysql_query("UPDATE `users` SET `order` = '$order' WHERE user_id = $user_id");
 	mysql_query("INSERT INTO orders (html, user_id, total_cost) VALUES ('$order', '$user_id', '$total_cost')");
-	$orderList[] = $order; // НУЖНО ХРАНИТЬ В БАЗЕ ДАННЫХ А НЕ ПХП - СОЗДАТЬ ТАБЛИЦУ ORDERS
-
-	// mysql_query("UPDATE users SET order = '$order' WHERE user_id = $user_id");
+	mysql_query("UPDATE `users` SET `main` = '$main' WHERE user_id = $user_id");
 }
 
 function take_order_data($user_id, $first_name, $phone, $city, $street, $house, $extra) {

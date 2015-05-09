@@ -1,6 +1,9 @@
 <?php
 include 'core/init.php';
 
+if (logged_in() === false)  {
+	header('Location: index.php');
+}
 ?>
 
 <!DOCTYPE html>
@@ -51,7 +54,6 @@ include 'core/init.php';
 							  header('Location: payment.php');
 							} 
 							else {
-								take_order_data($user_data['user_id'], $_POST['first_name'], $_POST['phone'], $_POST['city'], $_POST['street'], $_POST['house'], $_POST['extra']);
 							}
 						  	?>
 </div> 
@@ -70,7 +72,7 @@ include 'core/init.php';
 <form class="form-horizontal" name="sentMessage" id="contactForm" novalidate action="" method="post"> 
 
 	<div class="form-group"> 
-	<label for="inputAddress" class="col-sm-2 control-label">Ваше имя
+	<label for="inputAddress" class="col-sm-2 control-label">Ваше имя 
 	</label> 
 	<div class="col-sm-10"> 
 	<input type="text" required value="<?php fill_input('first_name'); ?>" class="form-control" name="first_name" placeholder="Например Маша" id="name">
@@ -137,7 +139,7 @@ include 'core/init.php';
 <nav> 
 <ul class="pager"> 
 
-<li class="previous"><a id="backToMain" href="#" class="backForth">
+<li class="previous"><a id="backToMain" href="main.php" class="backForth">
 <span aria-hidden="true">&larr;
 </span> Назад</a>
 </li> 

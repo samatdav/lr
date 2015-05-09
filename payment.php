@@ -1,3 +1,12 @@
+<?php
+include 'core/init.php';
+
+if (logged_in() === false)  {
+	header('Location: index.php');
+}
+?>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,21 +39,41 @@
 <div class="container"> 
 <div class="jumbotron content paybox"> 
 
+<?php
+$user_id = $user_data['user_id'];
+$sql = "SELECT `total_cost` FROM `orders` WHERE user_id = $user_id";
+$result = mysql_query($sql) or die(mysql_error());
+while($row = mysql_fetch_assoc($result)) {
+    $cost_all[] = $row['total_cost'];
+}
+
+$echo_grocery_cost = $cost_all[count($cost_all)-1];
+
+if ($echo_grocery_cost < 1000) {
+	$deliveryCost = 50;
+} else {
+	$deliveryCost = 0;
+}
+
+$echo_total_cost = $echo_grocery_cost + $deliveryCost;
+
+?>
+
 <form class="form-horizontal">
 
 	<div class="form-group"> 
 		<label for="inputPassword3" class="col-sm-4 control-label">Продуктов на </label> 
-		<div type="text" class="col-sm-8 order-price"> '+totalCost+' рублей </div> 
+		<div type="text" class="col-sm-8 order-price"> <?php echo $echo_grocery_cost;?> рублей </div> 
 	</div> 
 
 	<div class="form-group"> 
 		<label for="inputPassword3" class="col-sm-4 control-label">Стоимость доставки</label> 
-		<div type="text" class="col-sm-8 order-price"> '+deliveryCost+' рублей </div> 
+		<div type="text" class="col-sm-8 order-price"> <?php echo $deliveryCost; ?> рублей </div> 
 	</div> 
 
 	<div class="form-group"> 
 		<label for="inputPassword3" class="col-sm-4 control-label">Итого к оплате </label> 
-		<div type="text" class="col-sm-8 order-price"> '+(totalCost + deliveryCost)+' рублей</div> 
+		<div type="text" class="col-sm-8 order-price"> <?php echo $echo_total_cost; ?> рублей</div> 
 	</div>
 
 </form>
@@ -52,10 +81,10 @@
 	<nav> 
 		<ul class="pager"> 
 			<li class="previous">
-				<a href="#" id="backToOrder" class="backForth"><span aria-hidden="true">&larr;</span> Назад</a>
+				<a href="order.php" id="backToOrder" class="backForth"><span aria-hidden="true">&larr;</span> Назад</a>
 			</li>
 			<li id="tt" class="next" data-toggle="tooltip" data-placement="right" title="Tooltip on top">
-				<iframe frameborder="0" allowtransparency="true" scrolling="no" src="https://money.yandex.ru/embed/small.xml?account=410013085842859&quickpay=small&any-card-payment-type=on&button-text=01&button-size=l&button-color=black&targets=123&default-sum=155&successURL=" width="241" height="54"></iframe>
+				<iframe frameborder="0" allowtransparency="true" scrolling="no" src="https://money.yandex.ru/embed/small.xml?account=410013085842859&quickpay=small&any-card-payment-type=on&button-text=01&button-size=l&button-color=black&targets=expfood&default-sum=<?php echo $echo_total_cost; ?>&successURL=" width="241" height="54"></iframe>
 			</li>
 		</ul> 
 	</nav>

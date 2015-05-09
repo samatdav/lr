@@ -74,7 +74,7 @@ function codeAddress() {
 
                 flag = true;
                 var mwords = document.getElementById("map-words");
-                mwords.innerHTML = '<div class="slimbox"> <h1>Мы работаем для тебя!</h1> <h2>Зарегистрируйся и получи бесплатную доставку на первый заказ!</h2> <form class="form-group" method="post"> <div class="form-group"> <input required type="email" name="email" class="form-control" id="exampleInputEmail1" placeholder="Email"> </div> <div class="form-group"> <input required type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password"> </div> <div class="hidden"> <input type="text" name="city" id="inputCity"> </div> <div class="hidden"> <input type="text" name="street" id="inputStreet"> </div> <div class="hidden"> <input type="text" name="house" id="inputHouse"> </div> <input type="submit" class="btn-signin btn btn-primary btn-block" value="Register"> </form>  <p> Уже есть аккаунт? <a class="signup" href="signin.html">Войти</a> </p> </div> </div><style>#map-canvas { opacity: 0.5; } #map-words {height: 100%;}</style>';
+                mwords.innerHTML = '<div class="slimbox"> <h1>Мы работаем для тебя!</h1> <h2>Зарегистрируйся и получи бесплатную доставку на первый заказ!</h2> <form class="form-group" method="post"> <div class="form-group"> <input required type="email" name="email" class="form-control" id="exampleInputEmail1" placeholder="Email"> </div> <div class="form-group"> <input required type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password"> </div> <div class="hidden"> <input type="text" name="city" id="inputCity"> </div> <div class="hidden"> <input type="text" name="street" id="inputStreet"> </div> <div class="hidden"> <input type="text" name="house" id="inputHouse"> </div> <input type="submit" class="btn-signin btn btn-primary btn-block" value="ЗАРЕГИСТРИРОВАТЬСЯ"> </form>  <p> Уже есть аккаунт? <a class="signup" href="signin.html">Войти</a> </p> </div> </div><style>#map-canvas { opacity: 0.5; } #map-words {height: 100%;}</style>';
 
                 inputAddress();
 
@@ -105,10 +105,40 @@ function inputAddress() {
 
 
 
+
 $("html").keypress(function(e) {
     if(e.which == 13) {
       codeAddress();
     }
 });
 
+// var isDown = false;
+
+// $(".header").mousedown(function(){
+//     isDown = true;
+// });
+
+// $(document).mouseup(function(){
+//     if(isDown){
+//         alert("123");
+//         isDown = false;
+//     }
+// }); 
+
+// $("body").mouseover(function(){
+//     alert("123");
+// });
+
+// $('body').on('mousedown', '.enemy', function(event) {
+
+//     alert("123");
+
+// });
+
+
+// $(document).on('click', ".increase_count", function(){
+//     codeAddress();
+// });
+
 google.maps.event.addDomListener(window, 'load', initialize);
+

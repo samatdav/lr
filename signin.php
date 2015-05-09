@@ -1,6 +1,10 @@
 <?php
 include 'core/init.php';
 
+
+if (logged_in())  {
+	header('Location: main.php');
+}
 ?>
 
 <!doctype <!DOCTYPE html>
@@ -47,11 +51,11 @@ if (empty($_POST) === false) {
 
 
 	if (empty($username) === true || empty($username) === true) {
-		$errors[] = 'please enter u and p';
+		$errors[] = 'Please enter email and password';
 	}   else {
 		$login = login($username, $password);
 		if ($login === false) {
-			$errors[] = 'wrong u and p pair';
+			$errors[] = 'wrong email and password combination';
 
 		} else {
 			$_SESSION['user_id'] = $login;
@@ -80,7 +84,7 @@ if (empty($_POST) === false) {
 	  <div class="form-group">
 	    <input autocomplete="on" name="password" required type="password" class="form-control" id="exampleInputPassword1" placeholder="Пароль">
 	  </div>
-	  <input type="submit" class="btn-signin btn btn-primary btn-block" value="Log in">
+	  <input type="submit" class="btn-signin btn btn-primary btn-block" value="ВОЙТИ">
 	</form>
 	<p>
 	  Нет аккаунта?

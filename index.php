@@ -1,6 +1,11 @@
 <?php
 include 'core/init.php';
 
+
+if (logged_in())  {
+	header('Location: main.php');
+}
+
 if (empty($_POST) === false) {
 	if (empty($errors) === true) {
 
@@ -43,13 +48,15 @@ if (empty($_POST) === false) {
         </nav>      
 	  </div>
 
-	    <a href="#">
+	    
             <img class="logo" id="logo_icon" src="img/icon_trans.png" alt="expfood">
             <img class="logo" id="logo_text" src="img/logo_main.png" alt="expfood">
+            <div id="index_text_box"><img class="logo" id="index_text" src="img/index_text.png" alt="expfood"></div>
             <?php
-	  		// echo $user_data['username'];
+
+
 	  		?>
-        </a>
+        
 
     <?php
 
@@ -67,7 +74,10 @@ if (empty($_POST) === false) {
 			);
 
 			register_user($register_data);
-			// print_r($register_data);
+			$username = $_POST['email'];
+			$password = $_POST['password'];
+			$login = login($username, $password);
+			$_SESSION['user_id'] = $login;
 			header('Location: main.php');
 			exit();
 
@@ -93,5 +103,7 @@ if (empty($_POST) === false) {
 	<?php
 	}
 	?>
+
+
 </body>
 </html>

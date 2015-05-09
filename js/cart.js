@@ -17,7 +17,8 @@ $(document).on('click', ".increase_count", function(){
 	newItem = (
 				'<tr class="ordered-item" id="cart-'+$(this).closest('.product').attr('id')+'"> '+
 					'<td class="image">'+ $(this).closest('.product').children('img')[0].outerHTML + '</td>' +
-					'<td class="name">'+$(this).closest('.product').find('.product-name').html()+'</td>' +
+					'<td class="name">'+$(this).closest('.product').find('.product-name').html()+'<br> <b>'
+					+$(this).closest('.product').find('.product-howmuch').html()+'</b></td>' +
 					'<td class="price">'+parseFloat($(this).closest('.product').find('.product-price').html())+' &#8381;</td>' +
 					'<td class="quantity"> x '+value+'</td>' +
 					'<td class="total"> = '+ parseFloat($(this).closest('.product').find('.product-price').html())*parseFloat(value)+' &#8381; </td>'+
@@ -40,8 +41,7 @@ $(document).on('click', ".increase_count", function(){
 
 	$("#ordered-items").prepend(newItem);
 	
-	var inputOrder = document.getElementById("inputOrder");
-	inputOrder.value = $("#ordered-items").html();
+	
 
 	totalCost = totalCost + parseFloat($(this).closest('.product').find('.product-price').html())
 
@@ -51,6 +51,14 @@ $(document).on('click', ".increase_count", function(){
 	// $( "iframe" ).attr({
 	//   src: "https://money.yandex.ru/embed/small.xml?account=410013034873931&quickpay=small&any-card-payment-type=on&button-text=02&button-size=l&button-color=orange&targets=expfood&default-sum="+totalCost+"&successURL=",
 	// });
+	var inputOrder = document.getElementById("inputOrder");
+	inputOrder.value = $("#cart-items").html();
+
+	var inputCost = document.getElementById("inputCost");
+	inputCost.value = totalCost;
+
+	// var inputMain = document.getElementById("inputMain");
+	// inputMain.value = $("#item-wrap-inner").html();
 
 	return newItem;
 });
