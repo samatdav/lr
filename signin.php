@@ -30,7 +30,7 @@ if (logged_in())  {
 <div class="header navbar-fixed-top"> <nav class="navbar fluid-container"> 
 
 <div class="navbar-header"> 
-  <a href="index.html">
+  <a href="index.php">
     <img class="logo" id="logo_icon" src="img/icon_trans.png" alt="expfood"> 
     <img class="logo" id="logo_text" src="img/logo_main.png" alt="expfood"> 
   </a>

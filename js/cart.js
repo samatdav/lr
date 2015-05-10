@@ -47,6 +47,7 @@ $(document).on('click', ".increase_count", function(){
 
 
 	$('#cart-price').html(totalCost);
+	$('#total_main').html(totalCost + '  &#8381;');
 
 	// $( "iframe" ).attr({
 	//   src: "https://money.yandex.ru/embed/small.xml?account=410013034873931&quickpay=small&any-card-payment-type=on&button-text=02&button-size=l&button-color=orange&targets=expfood&default-sum="+totalCost+"&successURL=",
@@ -107,6 +108,7 @@ $(document).on('click', ".reduce_count", function(){
 	totalCost = totalCost - parseFloat($(this).closest('.product').find('.product-price').html());
 
 	$('#cart-price').html(totalCost);
+	$('#total_main').html(totalCost + '  &#8381;');
 
 
 
@@ -126,7 +128,15 @@ function updateClock() {
 	var h = d.getHours() + 1;
 	var m = d.getMinutes();
 	$("#cart_time_b").html(h+':'+ (d.getMinutes()<10?'0':'') + m);
-	$(".order-time").html(h+':'+ (d.getMinutes()<10?'0':'') + m);
+	// $(".order-time").html(h+':'+ (d.getMinutes()<10?'0':'') + m);
+	// если верный работает с 9 до 22
+	if ((h > 21 && m > 30) || h > 22 || h < 8){
+		$("#cart_time_b").html('9:00');
+		$("#delivery_day").html('Доставим завтра до ');
+
+	} 
+	
+
     setTimeout(updateClock, 6000);
     return [h,m];
 }

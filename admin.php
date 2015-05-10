@@ -1,10 +1,9 @@
 <?php 
 include 'core/init.php';
 
-if (logged_in() === false)  {
+if ($user_data['username'] !== 'admin@expfood.ru')  {
 	header('Location: index.php');
-}
-
+} 
 // echo $user_data['order'];
 // echo $all_data;
 $user_id = $user_data['user_id'];

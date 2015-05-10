@@ -37,9 +37,8 @@ if (logged_in() === false)  {
 				  <span class="icon-bar"></span>
 				  <span class="icon-bar"></span>
 				</button>
-					<a href="#">
 					<img id="logo" src="img/logo_400.png" alt="expfood"><!-- Express Food -->
-				</a>
+				
 			  </div>
   
                  
@@ -83,7 +82,10 @@ if (logged_in() === false)  {
 
                     <ul class="nav navbar-right cart">
                       <li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span id="cart-number">0</span></a>
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span id="cart-number">0</span> 
+					<div id="total_main">
+			      
+			      </div></a>
 					<div class="cart-info dropdown-menu" id="cart-items">
 
 						<table class="table">
@@ -108,13 +110,13 @@ if (logged_in() === false)  {
 						  <table>
 							 <tbody>
 							 <tr id="totalCost">
-								  <td>Итого </td>
-								  <td class="cart-second-col"><b> <span  id="cart-price"> 0.00</span></b> руб</td>
-								</tr>
+							  <td>Итого </td>
+							  <td class="cart-second-col"><b> <span  id="cart-price"> 0.00</span></b> руб</td>
+							 </tr>
 							 <tr>
-								  <td>Доставим сегодня до </td>
-								  <td class="cart-second-col"><b id="cart_time_b"></b></td>
-								</tr>
+							  <td id="delivery_day">Доставим сегодня до </td>
+							  <td class="cart-second-col"><b id="cart_time_b"></b></td>
+							 </tr>
 							</tbody>
 						  </table>
 
@@ -133,7 +135,7 @@ if (logged_in() === false)  {
 						  
 
 						  <form class="form-group" method="post"> 
-							<div class=""> <input type="text" name="order" id="inputOrder"> </div>
+							<div class="hidden"> <input type="text" name="order" id="inputOrder"> </div>
 							<div class="hidden"> <input type="text" name="total_cost" id="inputCost"> </div>
 							<div class="hidden"> <input type="text" name="main" id="inputMain"> </div>
 							<input type="submit" class="checkout_button btn btn-primary" value="Заказать"> 
@@ -144,10 +146,10 @@ if (logged_in() === false)  {
 						</div>
 					</div> 
 			      </li>
-			      <!-- <li id="account">
-			      Account
-			      </li> -->
+			      
 			     </ul>
+
+			     
 					 
                     
 					 

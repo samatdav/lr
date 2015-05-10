@@ -1503,7 +1503,7 @@ ul.slides
 	height: 60px;
 	position: relative;
 	top: -10px;
-	left: 10px;
+	left: 50px;
 }
 #totalCost {
 	text-align: right;
@@ -2517,7 +2517,18 @@ label
    font-size:15px;
    vertical-align:middle;
 }
+#total_main {
+	position: absolute;
+	right: -80px;
+	top: 7px;
+	font-size: 20px;
+	/*color: #ffa500;*/
 
+
+}
+#total_main:hover {
+	color: #ffa500;
+}
 .checkout {
 	text-align: center;
 	/*width: 200px;*/
