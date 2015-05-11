@@ -3,8 +3,7 @@ function fill_input($name) {
 	global $user_data;
 	if ($user_data[$name] !== 0 && $user_data[$name] !== '0' && $user_data[$name] !== 'undefined') {
 		echo $user_data[$name];
-
-	}
+	} 
 }
 
 function fill_main() {
@@ -21,12 +20,12 @@ function take_order($user_id, $order, $total_cost, $main) {
 	$user_id = (int)$user_id;
 	// mysql_query("UPDATE `users` SET `order` = '$order' WHERE user_id = $user_id");
 	mysql_query("INSERT INTO orders (html, user_id, total_cost) VALUES ('$order', '$user_id', '$total_cost')");
-	mysql_query("UPDATE `users` SET `main` = '$main' WHERE user_id = $user_id");
+	// mysql_query("UPDATE `users` SET `main` = '$main' WHERE user_id = $user_id");
 }
 
-function take_order_data($user_id, $first_name, $phone, $city, $street, $house, $extra) {
+function take_order_data($user_id, $first_name, $phone, $city, $street, $house, $entrance, $flat, $extra) {
 	$user_id = (int)$user_id;
-	mysql_query("UPDATE `users` SET `first_name` = '$first_name', `phone` = '$phone', `city` = '$city', `street` = '$street', `house` = '$house', `extra` = '$extra' WHERE user_id = $user_id");
+	mysql_query("UPDATE `users` SET `first_name` = '$first_name', `phone` = '$phone', `city` = '$city', `street` = '$street', `house` = '$house', `entrance` = '$entrance', `flat` = '$flat', `extra` = '$extra' WHERE user_id = $user_id");
 }
 
 function register_user($register_data) {
@@ -63,7 +62,19 @@ function user_data($user_id) {
 		$data = mysql_fetch_assoc(mysql_query("SELECT $fields FROM users WHERE user_id = $user_id"));
 		return $data;
 	}
+}
 
+function order_data($user_id) {
+	$order_data = array();
+	$user_id = (int)$user_id;
+	$func_num_args = func_num_args();
+	$func_get_args = func_get_args();	
+	if ($func_num_args > 1) {
+		unset($func_get_args[0]);
+		$fields = '' . implode(', ', $func_get_args) . '';
+		$order_data = mysql_fetch_assoc(mysql_query("SELECT $fields FROM orders WHERE user_id = $user_id"));
+		return $order_data;
+	}
 }
 
 function all_data() {

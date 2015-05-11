@@ -19,10 +19,13 @@ if (logged_in() === false)  {
 	<link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
+        <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
 	<title>Express Food</title>
 	<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
 	<script type="text/javascript" src="js/tile.js"></script>
 	
+
 
 </head>
 <body onhashchange="hasher();">
@@ -54,6 +57,8 @@ if (logged_in() === false)  {
 					  		Верный
 					  		<?php
 					  		echo $user_data['username'];
+
+
 					  		
 					  		
 
@@ -86,6 +91,18 @@ if (logged_in() === false)  {
 					<div id="total_main">
 			      
 			      </div></a>
+
+<?php
+  if (empty($_POST) === false) {
+
+	$arr = array($user_data['user_id'],  $user_data['first_name'], $user_data['phone'], $user_data['username'], $user_data['city'], $user_data['street'], $user_data['house'], $user_data['entrance'], $user_data['extra']);
+		$user_order_info = implode(" <br> ",$arr)."<br>";
+  	// $html = $user_order_info . $_POST['order'];
+    take_order($user_data['user_id'], $_POST['order'], $_POST['total_cost'], $_POST['main']);
+
+  	header('Location: order.php');
+  }
+?>
 					<div class="cart-info dropdown-menu" id="cart-items">
 
 						<table class="table">
@@ -111,28 +128,14 @@ if (logged_in() === false)  {
 							 <tbody>
 							 <tr id="totalCost">
 							  <td>Итого </td>
-							  <td class="cart-second-col"><b> <span  id="cart-price"> 0.00</span></b> руб</td>
+							  <td class="cart-second-col"><b> <span id="cart-price"> 0.00</span></b> руб</td>
 							 </tr>
 							 <tr>
 							  <td id="delivery_day">Доставим сегодня до </td>
 							  <td class="cart-second-col"><b id="cart_time_b"></b></td>
 							 </tr>
 							</tbody>
-						  </table>
-
-						  <?php
-							  if (empty($_POST) === false) {
-
-								$arr = array($user_data['user_id'],  $user_data['first_name'], $user_data['phone'], $user_data['username'], $user_data['city'], $user_data['street'], $user_data['house'], $user_data['entrance'], $user_data['extra']);
-					  			$user_order_info = implode(" <br> ",$arr)."<br>";
-							  	$html = $user_order_info . $_POST['order'];
-							    take_order($user_data['user_id'], $html, $_POST['total_cost'], $_POST['main']);
-
-							  	header('Location: order.php');
-							  }
-						  ?>
-
-						  
+						  </table>										  
 
 						  <form class="form-group" method="post"> 
 							<div class="hidden"> <input type="text" name="order" id="inputOrder"> </div>
@@ -180,10 +183,23 @@ if (logged_in() === false)  {
 
 
 <?php
-// if (fill_main()) {
-// fill_main();
-// } else {
+$result = mysql_query("SELECT * FROM products");
+while($row = mysql_fetch_row($result))
+{
+ //    echo "<tr>";
+ //    // echo "<td>$row[0]</td>";
+ //    for ($x = 0; $x < 7; $x++) {
+	//     echo "<td>$row[$x]</td>";		    
+	// }
+ //    echo "</tr><br>";
+
+echo '<div class="product-wrap"> <div class="product" id="' . $row[0] . '"> <img class="img-responsive" src="' . $row[3] . '">   <button class="item_count btn count btn-dark-blue btn-small-med btn-trans">0</button> <div class="action"> <div> <button href="javascript:void(0)" class="reduce_count btn minus btn-dark-blue btn-small-med btn-trans">-</button> <button href="javascript:void(0)" class="increase_count btn add btn-dark-blue btn-small-med btn-trans">Добавить</button> </div> </div> <div class="desc"> <div class="name"> <p class="product-name">' . $row[2] . '</p> </div> <div class="product-howmuch"> ' . $row[5] . ' </div> <div class="price"> <p class="product-price">' . $row[4] . ' руб</p> </div> </div> </div> </div>';
+
+}
 ?>
+
+
+
 
 			<div class="product-wrap">
 			    <div class="product" id="11">

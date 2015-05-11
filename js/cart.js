@@ -21,7 +21,7 @@ $(document).on('click', ".increase_count", function(){
 					+$(this).closest('.product').find('.product-howmuch').html()+'</b></td>' +
 					'<td class="price">'+parseFloat($(this).closest('.product').find('.product-price').html())+' &#8381;</td>' +
 					'<td class="quantity"> x '+value+'</td>' +
-					'<td class="total"> = '+ parseFloat($(this).closest('.product').find('.product-price').html())*parseFloat(value)+' &#8381; </td>'+
+					'<td class="total"> = '+ (parseFloat($(this).closest('.product').find('.product-price').html())*parseFloat(value)).toFixed(2)+' &#8381; </td>'+
 				'</tr>');
 
 	
@@ -43,11 +43,13 @@ $(document).on('click', ".increase_count", function(){
 	
 	
 
-	totalCost = totalCost + parseFloat($(this).closest('.product').find('.product-price').html())
+	totalCost = totalCost + parseFloat($(this).closest('.product').find('.product-price').html());
+
+	totalCost = Math.round(totalCost);
 
 
 	$('#cart-price').html(totalCost);
-	$('#total_main').html(totalCost + '  &#8381;');
+	$('#total_main').html(totalCost + '&#8381;');
 
 	// $( "iframe" ).attr({
 	//   src: "https://money.yandex.ru/embed/small.xml?account=410013034873931&quickpay=small&any-card-payment-type=on&button-text=02&button-size=l&button-color=orange&targets=expfood&default-sum="+totalCost+"&successURL=",
@@ -81,7 +83,7 @@ $(document).on('click', ".reduce_count", function(){
 					'<td class="name">'+$(this).closest('.product').find('.product-name').html()+'</td>' +
 					'<td class="price">'+parseFloat($(this).closest('.product').find('.product-price').html())+' &#8381;</td>' +
 					'<td class="quantity"> x '+value+'</td>' +
-					'<td class="total"> = '+ parseFloat($(this).closest('.product').find('.product-price').html())*parseFloat(value)+'</td>'+
+					'<td class="total"> = '+ (parseFloat($(this).closest('.product').find('.product-price').html())*parseFloat(value)).toFixed(2)+'</td>'+
 				'</tr>');
 	var itemId = $(this).closest('.product');
 
@@ -107,8 +109,8 @@ $(document).on('click', ".reduce_count", function(){
 
 	totalCost = totalCost - parseFloat($(this).closest('.product').find('.product-price').html());
 
-	$('#cart-price').html(totalCost);
-	$('#total_main').html(totalCost + '  &#8381;');
+	$('#cart-price').html(totalCost.toFixed(2));
+	$('#total_main').html(totalCost.toFixed(2) + '  &#8381;');
 
 
 
@@ -130,11 +132,14 @@ function updateClock() {
 	$("#cart_time_b").html(h+':'+ (d.getMinutes()<10?'0':'') + m);
 	// $(".order-time").html(h+':'+ (d.getMinutes()<10?'0':'') + m);
 	// если верный работает с 9 до 22
-	if ((h > 21 && m > 30) || h > 22 || h < 8){
+	if ((h > 21 && m > 30) || h > 22){
 		$("#cart_time_b").html('9:00');
 		$("#delivery_day").html('Доставим завтра до ');
 
 	} 
+	if (h < 8){
+		$("#cart_time_b").html('9:00');
+	}
 	
 
     setTimeout(updateClock, 6000);
@@ -160,9 +165,9 @@ $(".paybtn").click(function(){
 $('#yiframe').click(function () {
 	alert('clicked');
 });
-$('.dropdown').click(function () {
-			$( "iframe" ).attr({
-	  src: "https://money.yandex.ru/embed/small.xml?account=410013034873931&quickpay=small&any-card-payment-type=on&button-text=02&button-size=l&button-color=orange&targets=expfood&default-sum="+totalCost+"&successURL=",
-	});
-});
+// $('.dropdown').click(function () {
+// 			$( "iframe" ).attr({
+// 	  src: "https://money.yandex.ru/embed/small.xml?account=410013034873931&quickpay=small&any-card-payment-type=on&button-text=02&button-size=l&button-color=orange&targets=expfood&default-sum="+totalCost.toFixed(2)+"&successURL=",
+// 	});
+// });
 

@@ -30,6 +30,8 @@ if (empty($_POST) === false) {
 	    <link rel="stylesheet" type="text/css" href="css/style.css">
 	    <link rel="stylesheet" type="text/css" href="css/signin.css">
 	    <link rel="stylesheet" type="text/css" href="css/index.css">
+	    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+		<link rel="icon" href="img/favicon.ico" type="image/x-icon">
 
 	    <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
 	    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>

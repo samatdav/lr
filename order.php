@@ -19,6 +19,8 @@ if (logged_in() === false)  {
 	<link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="img/favicon.ico" type="image/x-icon">
 
 
 	<title>Express Food</title>
@@ -38,24 +40,19 @@ if (logged_in() === false)  {
 
 <div class="navbar-header"> <a href="main.php"><img class="logo" id="logo_icon" src="img/icon_trans.png" alt="expfood"> <img class="logo" id="logo_text" src="img/logo_main.png" alt="expfood"> </a>
 					  		
-					  		<?php
+<?php
+	echo $user_data['username'];
+	echo output_errors($errors);
+	?>
 
-
-
-
-
-					  		echo $user_data['username'];
-					  		echo output_errors($errors);
-					  		?>
-
-					  		<?php
-					  		if (empty($_POST['first_name']) === false && empty($_POST['phone']) === false && empty($_POST['city']) === false && empty($_POST['street']) === false && empty($_POST['house']) === false) {
-							  take_order_data($user_data['user_id'], $_POST['first_name'], $_POST['phone'], $_POST['city'], $_POST['street'], $_POST['house'], $_POST['extra']);
-							  header('Location: payment.php');
-							} 
-							else {
-							}
-						  	?>
+	<?php
+	if (empty($_POST['first_name']) === false && empty($_POST['phone']) === false && empty($_POST['city']) === false && empty($_POST['street']) === false && empty($_POST['house']) === false) {
+	take_order_data($user_data['user_id'], $_POST['first_name'], $_POST['phone'], $_POST['city'], $_POST['street'], $_POST['house'], $_POST['entrance'], $_POST['flat'], $_POST['extra']);
+	header('Location: payment.php');
+	} 
+	else {
+	}
+?>
 </div> 
 
 <div class="navbar-collapse collapse navbar-right"> 
@@ -113,6 +110,24 @@ if (logged_in() === false)  {
 	</label> 
 	<div class="col-sm-10">
 	<input type="text"  value="<?php fill_input('house'); ?>" required class="form-control" name="house" placeholder="2" id="email">
+    <p class="help-block text-danger"></p>
+	</div> 
+	</div> 
+
+	<div class="form-group"> 
+	<label for="inputName"  class="col-sm-2 control-label">Корпус / Подъезд
+	</label> 
+	<div class="col-sm-10">
+	<input type="text"  value="<?php fill_input('entrance'); ?>" required class="form-control" name="entrance" placeholder="" id="email">
+    <p class="help-block text-danger"></p>
+	</div> 
+	</div> 
+
+	<div class="form-group"> 
+	<label for="inputName"  class="col-sm-2 control-label">Квартира
+	</label> 
+	<div class="col-sm-10">
+	<input type="text"  value="<?php fill_input('flat'); ?>" required class="form-control" name="flat" placeholder="" id="email">
     <p class="help-block text-danger"></p>
 	</div> 
 	</div> 

@@ -1,23 +1,49 @@
 <?php 
 include 'core/init.php';
-
-if ($user_data['username'] !== 'admin@expfood.ru')  {
-	header('Location: index.php');
-} 
+mysql_set_charset("utf8");
+// if ($user_data['username'] !== 'admin@expfood.ru')  {
+// 	header('Location: index.php');
+// } 
 // echo $user_data['order'];
 // echo $all_data;
-$user_id = $user_data['user_id'];
-$sql = "SELECT `html` FROM `orders`";
-$result = mysql_query($sql) or die(mysql_error());
-$order_ids = mysql_query("SELECT `order_id` FROM `orders`") or die(mysql_error());
-while($row = mysql_fetch_assoc($result)) {
-    $order_all[] = $row['html'];
-}
-while($row = mysql_fetch_assoc($order_ids)) {
-    $order_ids_all[] = $row['order_id'];
+
+// $user_id = $user_data['user_id'];
+// $sql = "SELECT `html` FROM `orders`";
+// $result = mysql_query($sql) or die(mysql_error());
+// $order_ids = mysql_query("SELECT `order_id` FROM `orders`") or die(mysql_error());
+// while($row = mysql_fetch_assoc($result)) {
+//     $order_all[] = $row['html'];
+// }
+// while($row = mysql_fetch_assoc($order_ids)) {
+//     $order_ids_all[] = $row['order_id'];
+// }
+
+
+
+$result = mysql_query("SELECT * FROM orders");
+
+
+
+
+function order_user_info($user_id) {
+	$user_data2 = user_data($user_id, 'username', 'city', 'street', 'house', 'flat', 'entrance', 'first_name', 'phone', 'extra');
+	$user_info = $user_data2['username'] . '<br>' . $user_data2['city'] . '<br>' . $user_data2['street'] . '<br>' . $user_data2['house'] . '<br>' . $user_data2['flat'] . '<br>' . $user_data2['entrance'] . '<br>' . $user_data2['first_name'] . '<br>' .$user_data2['phone'] . '<br>' .$user_data2['extra'] . '<br>';
+
+	return $user_info;
 }
 
- 
+while($row = mysql_fetch_row($result))
+	{
+		$user_id = $row[3];
+		$user_info = order_user_info($user_id);
+		mysql_query("UPDATE `orders` SET `user_info` = '$user_info' WHERE user_id = $user_id");
+
+		echo "<a href='?" . $row[0] . "'>Удалить нижний заказ</a><br><br>";
+	    echo "$row[0]";
+	    echo "$row[4]";
+	    echo "$row[1]";
+	}
+
 
 
 ?>
@@ -44,7 +70,6 @@ while($row = mysql_fetch_assoc($order_ids)) {
 
 </head>
 <body onhashchange="hasher();">
-<a href="?$order_all[$x]">$order_all[$x]</a>
 <div class="page-container">
 
 
@@ -52,15 +77,31 @@ while($row = mysql_fetch_assoc($order_ids)) {
 	// output_orderList($orderList);
 	// echo output_orderList($orderList);
 	// echo count($orderList);
+	// $user_data2 = user_data(1, 'username', 'city', 'street', 'house', 'flat', 'entrance', 'first_name', 'phone', 'extra');
+	// echo user_data(1, 'username', 'city', 'street', 'house', 'flat', 'entrance', 'first_name', 'phone', 'extra')['username'];
 
-	for ($x = 0; $x < count($order_all); $x++) {
-		if (isset($_GET[$x]) && empty($_GET[$x])) {
-			$current_order_id = $order_ids_all[$x];
-			mysql_query("DELETE FROM orders WHERE order_id = $current_order_id");
-		}
-	    echo "<a href='?" . $x . "'>Удалить нижний заказ</a><br><br>";
-	    echo $order_all[$x];		    
+	// for ($x = 0; $x < count($order_all); $x++) {
+	// 	if (isset($_GET[$x]) && empty($_GET[$x])) {
+	// 		$current_order_id = $order_ids_all[$x];
+	// 		mysql_query("DELETE FROM orders WHERE order_id = $current_order_id");
+	// 	}
+	//     echo "<a href='?" . $x . "'>Удалить нижний заказ</a><br><br>";
+	//     echo $order_all[$x];		    
+	// }
+	while($row = mysql_fetch_row($result))
+	{
+		// if (isset($_GET[$x]) && empty($_GET[$x])) {
+		// 	$current_order_id = $row[0];
+		// 	mysql_query("DELETE FROM orders WHERE order_id = $current_order_id");
+		// }
+	    // echo "<a href='?" . $row[0] . "'>Удалить нижний заказ</a><br><br>";
+	    // echo "$row[0]";
+	    // echo "$row[4]";
+	    // echo "$row[1]";
 	}
+	// echo output_errors($errors);
+
+
 
 	
 

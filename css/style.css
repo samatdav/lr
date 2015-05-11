@@ -122,7 +122,7 @@ ul,ol
 
 select, textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"],input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="tel"], input[type="color"], .uneditable-input
 {
-   padding:14px 15px;
+   /*padding:14px 15px;*/
 }
 
 textarea:focus, input[type="text"]:focus, input[type="password"]:focus, input[type="datetime"]:focus, input[type="datetime-local"]:focus, input[type="date"]:focus, input[type="month"]:focus, input[type="time"]:focus, input[type="week"]:focus, input[type="number"]:focus, input[type="email"]:focus, input[type="url"]:focus, input[type="search"]:focus, input[type="tel"]:focus, input[type="color"]:focus, .uneditable-input:focus
@@ -1298,10 +1298,11 @@ ul.slides
 	padding:20px;
 }
 .product img {
-	height: 200px;
-	width: 100%;
+	max-width:100%;
+	max-height:100%;
 	border-top-left-radius: 5px;
 	border-top-right-radius: 5px;
+	margin: 0 auto;
 	
 }
 
