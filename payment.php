@@ -86,14 +86,14 @@ $echo_total_cost = $echo_grocery_cost + $deliveryCost;
 				<a href="order.php" id="backToOrder" class="backForth"><span aria-hidden="true">&larr;</span> Назад</a>
 			</li>
 			<li id="tt" class="next" data-toggle="tooltip" data-placement="right" title="Tooltip on top">
-				<iframe frameborder="0" allowtransparency="true" scrolling="no" src="https://money.yandex.ru/embed/small.xml?account=410013085842859&quickpay=small&any-card-payment-type=on&button-text=01&button-size=l&button-color=black&targets=expfood&default-sum=<?php echo $echo_total_cost; ?>&successURL=" width="241" height="54"></iframe>
+				<iframe frameborder="0" allowtransparency="true" scrolling="no" src="https://money.yandex.ru/embed/small.xml?account=410013085842859&quickpay=small&any-card-payment-type=on&button-text=02&button-size=l&button-color=white&targets=Express+Food&default-sum=<?php echo $echo_total_cost; ?>&successURL=expfood.ru/success.php?id=<?php echo $user_data['user_id']; ?>" width="195" height="54"></iframe>
 			</li>
 		</ul> 
 	</nav>
   </div> 
   </div> 	
 	
-
+ 
 
 
 </div>
@@ -108,3 +108,29 @@ $echo_total_cost = $echo_grocery_cost + $deliveryCost;
 
 </body>
 </html>
+
+<?php
+
+$result = mysql_query("SELECT * FROM orders");
+
+
+
+
+function order_user_info($user_id) {
+	$user_data2 = user_data($user_id, 'username', 'city', 'street', 'house', 'flat', 'entrance', 'first_name', 'phone', 'extra');
+	$user_info = $user_data2['username'] . '<br>' . $user_data2['city'] . '<br>' . $user_data2['street'] . '<br>' . $user_data2['house'] . '<br>' . $user_data2['flat'] . '<br>' . $user_data2['entrance'] . '<br>' . $user_data2['first_name'] . '<br>' .$user_data2['phone'] . '<br>' .$user_data2['extra'] . '<br>';
+
+	return $user_info;
+}
+
+while($row = mysql_fetch_row($result))
+	{
+		$user_id = $row[3];
+		$user_info = order_user_info($user_id);
+		mysql_query("UPDATE `orders` SET `user_info` = '$user_info' WHERE user_id = $user_id");
+		mysql_query("UPDATE `orders_archive` SET `user_info` = '$user_info' WHERE user_id = $user_id");
+	}
+
+
+
+?>

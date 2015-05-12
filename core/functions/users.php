@@ -20,6 +20,7 @@ function take_order($user_id, $order, $total_cost, $main) {
 	$user_id = (int)$user_id;
 	// mysql_query("UPDATE `users` SET `order` = '$order' WHERE user_id = $user_id");
 	mysql_query("INSERT INTO orders (html, user_id, total_cost) VALUES ('$order', '$user_id', '$total_cost')");
+	mysql_query("INSERT INTO orders_archive (html, user_id, total_cost) VALUES ('$order', '$user_id', '$total_cost')");
 	// mysql_query("UPDATE `users` SET `main` = '$main' WHERE user_id = $user_id");
 }
 

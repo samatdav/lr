@@ -1,6 +1,6 @@
 <?php
 include 'core/init.php';
-header('Content-type: text/html; charset=utf-8');
+
 $result = mysql_query("SELECT * FROM products");
 while($row = mysql_fetch_row($result))
 {
@@ -55,9 +55,10 @@ while($row = mysql_fetch_row($result))
 // } else {
 ?>
 
-			<div class="product-wrap">
+<div class="product-wrap">
 			    <div class="product" id="11">
-				    <img class="img-responsive" src="img/apple.jpg">
+			    	<span class="helper"></span>
+				    <img class="" src="img/apple.jpg">
 				    <button class="item_count btn count btn-dark-blue btn-small-med btn-trans">0</button>
 
 				    <div class="action">
@@ -80,362 +81,35 @@ while($row = mysql_fetch_row($result))
 				    </div>
 				</div>
 			</div>
-		    <div class="product-wrap">
-			    <div class="product" id="10">
-				    <img style="background: url(http://www.pajurio-odontologija.lt/wp-content/uploads/2013/11/Apple13.jpg); background-position: center center; background-size: 100%; background-repeat: no-repeat;">
-				    <div class="item_count btn count">0</div>
-
-				    <div class="action">
-						<div>
-							<button href="javascript:;" class="reduce_count btn minus btn-dark-blue btn-small-med btn-trans">-</button>
-							<button href="javascript:;" class="increase_count btn add btn-dark-blue btn-small-med btn-trans">Добавить</button>
-						</div>
-					</div>
-					<div class="desc">
-					    <div class="name" id="onet">
-					    	<p class="product-name">Красное яблочко вкусное</p>
-					    </div>
-					    <div class="product-howmuch">
-					    	1 штука
-					    </div>
-					    <div class="price">
-					    	<p class="product-price">10.00 руб</p>
-					    </div>	
-				    </div>
-				</div>	
-			</div>
 
 
+<div class="frame">
+    <span class="helper"></span>
+    <img src="http://jsfiddle.net/img/logo.png" height=3 />
+</div>
 
-			<div class="product-wrap">
-			    <div class="product" id="12">
-				    <img style="background: url(http://globe-views.com/dcim/dreams/bananas/bananas-03.jpg); background-position: center center; background-size: 100%; background-repeat: no-repeat;">
-				    <div class="item_count btn count">0</div>
+<style type="text/css">
+.product {
 
-				    <div class="action">
-						<div>
-							<button href="javascript:;" class="reduce_count btn minus btn-dark-blue btn-small-med btn-trans">-</button>
-							<button href="javascript:;" class="increase_count btn add btn-dark-blue btn-small-med btn-trans">Добавить</button>
-						</div>
-					</div>
-					<div class="desc">
-					    <div class="name" id="onet">
-					    	<p class="product-name">Бананчик желтый</p>
-					    </div>
-					    <div class="price">
-					    	<p class="product-price">23.00 руб</p>
-					    </div>	
-				    </div>
-				</div>	
-			</div>
+    white-space: nowrap;
+    text-align: center; 
+}
 
-			<div class="product-wrap">
-			    <div class="product" id="13">
-				    <img style="background: url(http://www.healthbenefitstimes.com/9/uploads/2013/05/Orange-Carrot.jpg); background-position: center center; background-size: 100%; background-repeat: no-repeat;">
-				    <div class="item_count btn count">0</div>
+.helper {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
 
-				    <div class="action">
-						<div>
-							<button href="javascript:;" class="reduce_count btn minus btn-dark-blue btn-small-med btn-trans">-</button>
-							<button href="javascript:;" class="increase_count btn add btn-dark-blue btn-small-med btn-trans">Добавить</button>
-						</div>
-					</div>
-					<div class="desc">
-					    <div class="name" id="onet">
-					    	<p class="product-name">Морковка оранжевая</p>
-					    </div>
-					    <div class="price">
-					    	<p class="product-price">18.00 руб</p>
-					    </div>	
-				    </div>
-				</div>	
-			</div>
+.product img {
+    vertical-align: middle;
+    max-height: 280px;
+    max-width: 195px;
+    position: relative;
+    left: -4px;
+}
 
-			<div class="product-wrap">
-			    <div class="product" id="13">
-				    <img style="background: url(http://www.healthbenefitstimes.com/9/uploads/2013/05/Orange-Carrot.jpg); background-position: center center; background-size: 100%; background-repeat: no-repeat;">
-				    <div class="item_count btn count">0</div>
-
-				    <div class="action">
-						<div>
-							<button href="javascript:;" class="reduce_count btn minus btn-dark-blue btn-small-med btn-trans">-</button>
-							<button href="javascript:;" class="increase_count btn add btn-dark-blue btn-small-med btn-trans">Добавить</button>
-						</div>
-					</div>
-					<div class="desc">
-					    <div class="name" id="onet">
-					    	<p class="product-name">Морковка</p>
-					    </div>
-					    <div class="price">
-					    	<p class="product-price">18.00 руб</p>
-					    </div>	
-				    </div>
-				</div>	
-			</div>
-
-			<div class="col-lg-1 col-md-2 col-sm-4 product-wrap">
-			    <div class="product" id="14">
-				    <img style="background: url(http://globe-views.com/dcim/dreams/bananas/bananas-03.jpg); background-position: center center; background-size: 100%; background-repeat: no-repeat;">
-				    <div class="item_count btn count">0</div>
-
-				    <div class="action">
-						<div>
-							<button href="javascript:;" class="reduce_count btn minus btn-dark-blue btn-small-med btn-trans">-</button>
-							<button href="javascript:;" class="increase_count btn add btn-dark-blue btn-small-med btn-trans">Добавить</button>
-						</div>
-					</div>
-					<div class="desc">
-					    <div class="name" id="onet">
-					    	<p class="product-name">Бананчик </p>
-					    </div>
-					    <div class="price">
-					    	<p class="product-price">23.00 руб</p>
-					    </div>	
-				    </div>
-				</div>	
-			</div>
-
-			<div class="col-lg-1 col-md-2 col-sm-4 product-wrap">
-			    <div class="product" id="15">
-				    <img style="background: url(http://globe-views.com/dcim/dreams/bananas/bananas-03.jpg); background-position: center center; background-size: 100%; background-repeat: no-repeat;">
-				    <div class="item_count btn count">0</div>
-
-				    <div class="action">
-						<div>
-							<button href="javascript:;" class="reduce_count btn minus btn-dark-blue btn-small-med btn-trans">-</button>
-							<button href="javascript:;" class="increase_count btn add btn-dark-blue btn-small-med btn-trans">Добавить</button>
-						</div>
-					</div>
-					<div class="desc">
-					    <div class="name" id="onet">
-					    	<p class="product-name">Бананчик не  желтый</p>
-					    </div>
-					    <div class="price">
-					    	<p class="product-price">23.00 руб</p>
-					    </div>	
-				    </div>
-				</div>	
-			</div>
-
-			<div class="product-wrap">
-			    <div class="product" id="12">
-				    <img style="background: url(http://globe-views.com/dcim/dreams/bananas/bananas-03.jpg); background-position: center center; background-size: 100%; background-repeat: no-repeat;">
-				    <div class="item_count btn count">0</div>
-
-				    <div class="action">
-						<div>
-							<button href="javascript:;" class="reduce_count btn minus btn-dark-blue btn-small-med btn-trans">-</button>
-							<button href="javascript:;" class="increase_count btn add btn-dark-blue btn-small-med btn-trans">Добавить</button>
-						</div>
-					</div>
-					<div class="desc">
-					    <div class="name" id="onet">
-					    	<p class="product-name">Бананчик желтый</p>
-					    </div>
-					    <div class="price">
-					    	<p class="product-price">23.00 руб</p>
-					    </div>	
-				    </div>
-				</div>	
-			</div>
-
-			<div class="product-wrap">
-			    <div class="product" id="12">
-				    <img style="background: url(http://globe-views.com/dcim/dreams/bananas/bananas-03.jpg); background-position: center center; background-size: 100%; background-repeat: no-repeat;">
-				    <div class="item_count btn count">0</div>
-
-				    <div class="action">
-						<div>
-							<button href="javascript:;" class="reduce_count btn minus btn-dark-blue btn-small-med btn-trans">-</button>
-							<button href="javascript:;" class="increase_count btn add btn-dark-blue btn-small-med btn-trans">Добавить</button>
-						</div>
-					</div>
-					<div class="desc">
-					    <div class="name" id="onet">
-					    	<p class="product-name">Бананчик желтый</p>
-					    </div>
-					    <div class="price">
-					    	<p class="product-price">23.00 руб</p>
-					    </div>	
-				    </div>
-				</div>	
-			</div>
-
-			<div class="product-wrap">
-			    <div class="product" id="12">
-				    <img style="background: url(http://globe-views.com/dcim/dreams/bananas/bananas-03.jpg); background-position: center center; background-size: 100%; background-repeat: no-repeat;">
-				    <div class="item_count btn count">0</div>
-
-				    <div class="action">
-						<div>
-							<button href="javascript:;" class="reduce_count btn minus btn-dark-blue btn-small-med btn-trans">-</button>
-							<button href="javascript:;" class="increase_count btn add btn-dark-blue btn-small-med btn-trans">Добавить</button>
-						</div>
-					</div>
-					<div class="desc">
-					    <div class="name" id="onet">
-					    	<p class="product-name">Бананчик желтый</p>
-					    </div>
-					    <div class="price">
-					    	<p class="product-price">23.00 руб</p>
-					    </div>	
-				    </div>
-				</div>	
-			</div>
-
-			<div class="product-wrap">
-			    <div class="product" id="12">
-				    <img style="background: url(http://globe-views.com/dcim/dreams/bananas/bananas-03.jpg); background-position: center center; background-size: 100%; background-repeat: no-repeat;">
-				    <div class="item_count btn count">0</div>
-
-				    <div class="action">
-						<div>
-							<button href="javascript:;" class="reduce_count btn minus btn-dark-blue btn-small-med btn-trans">-</button>
-							<button href="javascript:;" class="increase_count btn add btn-dark-blue btn-small-med btn-trans">Добавить</button>
-						</div>
-					</div>
-					<div class="desc">
-					    <div class="name" id="onet">
-					    	<p class="product-name">Бананчик желтый</p>
-					    </div>
-					    <div class="price">
-					    	<p class="product-price">23.00 руб</p>
-					    </div>	
-				    </div>
-				</div>	
-			</div>
-
-			<div class="product-wrap">
-			    <div class="product" id="12">
-				    <img style="background: url(http://globe-views.com/dcim/dreams/bananas/bananas-03.jpg); background-position: center center; background-size: 100%; background-repeat: no-repeat;">
-				    <div class="item_count btn count">0</div>
-
-				    <div class="action">
-						<div>
-							<button href="javascript:;" class="reduce_count btn minus btn-dark-blue btn-small-med btn-trans">-</button>
-							<button href="javascript:;" class="increase_count btn add btn-dark-blue btn-small-med btn-trans">Добавить</button>
-						</div>
-					</div>
-					<div class="desc">
-					    <div class="name" id="onet">
-					    	<p class="product-name">Бананчик желтый</p>
-					    </div>
-					    <div class="price">
-					    	<p class="product-price">23.00 руб</p>
-					    </div>	
-				    </div>
-				</div>	
-			</div>
-
-			<div class="product-wrap">
-			    <div class="product" id="12">
-				    <img style="background: url(http://globe-views.com/dcim/dreams/bananas/bananas-03.jpg); background-position: center center; background-size: 100%; background-repeat: no-repeat;">
-				    <div class="item_count btn count">0</div>
-
-				    <div class="action">
-						<div>
-							<button href="javascript:;" class="reduce_count btn minus btn-dark-blue btn-small-med btn-trans">-</button>
-							<button href="javascript:;" class="increase_count btn add btn-dark-blue btn-small-med btn-trans">Добавить</button>
-						</div>
-					</div>
-					<div class="desc">
-					    <div class="name" id="onet">
-					    	<p class="product-name">Бананчик желтый</p>
-					    </div>
-					    <div class="price">
-					    	<p class="product-price">23.00 руб</p>
-					    </div>	
-				    </div>
-				</div>	
-			</div>
-
-			<div class="product-wrap">
-			    <div class="product" id="12">
-				    <img style="background: url(http://globe-views.com/dcim/dreams/bananas/bananas-03.jpg); background-position: center center; background-size: 100%; background-repeat: no-repeat;">
-				    <div class="item_count btn count">0</div>
-
-				    <div class="action">
-						<div>
-							<button href="javascript:;" class="reduce_count btn minus btn-dark-blue btn-small-med btn-trans">-</button>
-							<button href="javascript:;" class="increase_count btn add btn-dark-blue btn-small-med btn-trans">Добавить</button>
-						</div>
-					</div>
-					<div class="desc">
-					    <div class="name" id="onet">
-					    	<p class="product-name">Бананчик желтый</p>
-					    </div>
-					    <div class="price">
-					    	<p class="product-price">23.00 руб</p>
-					    </div>	
-				    </div>
-				</div>	
-			</div>
-
-			<div class="product-wrap">
-			    <div class="product" id="12">
-				    <img style="background: url(http://globe-views.com/dcim/dreams/bananas/bananas-03.jpg); background-position: center center; background-size: 100%; background-repeat: no-repeat;">
-				    <div class="item_count btn count">0</div>
-
-				    <div class="action">
-						<div>
-							<button href="javascript:;" class="reduce_count btn minus btn-dark-blue btn-small-med btn-trans">-</button>
-							<button href="javascript:;" class="increase_count btn add btn-dark-blue btn-small-med btn-trans">Добавить</button>
-						</div>
-					</div>
-					<div class="desc">
-					    <div class="name" id="onet">
-					    	<p class="product-name">Бананчик желтый</p>
-					    </div>
-					    <div class="price">
-					    	<p class="product-price">23.00 руб</p>
-					    </div>	
-				    </div>
-				</div>	
-			</div>
-
-			<div class="product-wrap">
-			    <div class="product" id="12">
-				    <img style="background: url(http://globe-views.com/dcim/dreams/bananas/bananas-03.jpg); background-position: center center; background-size: 100%; background-repeat: no-repeat;">
-				    <div class="item_count btn count">0</div>
-
-				    <div class="action">
-						<div>
-							<button href="javascript:;" class="reduce_count btn minus btn-dark-blue btn-small-med btn-trans">-</button>
-							<button href="javascript:;" class="increase_count btn add btn-dark-blue btn-small-med btn-trans">Добавить</button>
-						</div>
-					</div>
-					<div class="desc">
-					    <div class="name" id="onet">
-					    	<p class="product-name">Бананчик желтый</p>
-					    </div>
-					    <div class="price">
-					    	<p class="product-price">23.00 руб</p>
-					    </div>	
-				    </div>
-				</div>	
-			</div>
-
-			<div class="product-wrap">
-			    <div class="product" id="12">
-				    <img style="background: url(http://globe-views.com/dcim/dreams/bananas/bananas-03.jpg); background-position: center center; background-size: 100%; background-repeat: no-repeat;">
-				    <div class="item_count btn count">0</div>
-
-				    <div class="action">
-						<div>
-							<button href="javascript:;" class="reduce_count btn minus btn-dark-blue btn-small-med btn-trans">-</button>
-							<button href="javascript:;" class="increase_count btn add btn-dark-blue btn-small-med btn-trans">Добавить</button>
-						</div>
-					</div>
-					<div class="desc">
-					    <div class="name" id="onet">
-					    	<p class="product-name">Бананчик желтый</p>
-					    </div>
-					    <div class="price">
-					    	<p class="product-price">23.00 руб</p>
-					    </div>	
-				    </div>
-				</div>	
-			</div>
+</style>
 
 			<?php 
 

@@ -3,7 +3,6 @@ include 'core/init.php';
 
 
 if (logged_in())  {
-	header('Location: main.php');
 }
 ?>
 
@@ -44,48 +43,31 @@ if (logged_in())  {
 </div> 
 
 <?php
-if (empty($_POST) === false) {
-	$username = $_POST['email'];
-	$password = $_POST['password'];
-	if (empty($username) === true || empty($username) === true) {
-		$errors[] = 'Please enter email and password';
-	}   else {
-		$login = login($username, $password);
-		if ($login === false) {
-			$errors[] = 'wrong email and password combination';
 
-		} else {
-			$_SESSION['user_id'] = $login;
-			header('Location: main.php');
-			exit();
-			// echo 'ok';
-
-		}
-	}
-
-
-}
 ?>
 
 
 <div class="content"> 
   <div class="slimbox">
-    <h1>С возвращением!</h1>
+    <h1>Спасибо за заказ!</h1>
     <?php
 	echo output_errors($errors);
     ?>
-    <form  action="" method="post">
-	  <div class="form-group">
-	    <input autocomplete="on" name="email" required type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
-	  </div>
-	  <div class="form-group">
-	    <input autocomplete="on" name="password" required type="password" class="form-control" id="exampleInputPassword1" placeholder="Пароль">
-	  </div>
-	  <input type="submit" class="btn-signin btn btn-primary btn-block" value="ВОЙТИ">
-	</form>
+    
 	<p>
-	  Нет аккаунта?
-	  <a class="signup" href="index.php">Зарегистрировать</a>
+	  Ваш заказ был успешно оплачен и скоро Вам его доаставят!
+	  <?php
+
+	if (isset($_GET['id'])) {
+		// echo $user_data['user_id'];
+	  	// echo htmlspecialchars($_GET["id"]);
+	  	//mysql_query("UPDATE `orders` SET `user_info` = '$user_info' WHERE user_id = $user_id");
+
+		$user_id = htmlspecialchars($_GET['id']);
+	  	mysql_query("UPDATE `orders` SET `paid` = 1 WHERE user_id = $user_id");
+	}
+	  
+	  ?>
 	</p>
   </div>
 </div>

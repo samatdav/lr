@@ -16,9 +16,8 @@ $(document).on('click', ".increase_count", function(){
 
 	newItem = (
 				'<tr class="ordered-item" id="cart-'+$(this).closest('.product').attr('id')+'"> '+
-					'<td class="image">'+ $(this).closest('.product').children('img')[0].outerHTML + '</td>' +
-					'<td class="name">'+$(this).closest('.product').find('.product-name').html()+'<br> <b>'
-					+$(this).closest('.product').find('.product-howmuch').html()+'</b></td>' +
+					'<td class="image"> <span class="helper"></span>'+ $(this).closest('.product').find('img')[0].outerHTML + '</td>' +
+					'<td class="name">'+$(this).closest('.product').find('.product-name').html()+'</td>' +
 					'<td class="price">'+parseFloat($(this).closest('.product').find('.product-price').html())+' &#8381;</td>' +
 					'<td class="quantity"> x '+value+'</td>' +
 					'<td class="total"> = '+ (parseFloat($(this).closest('.product').find('.product-price').html())*parseFloat(value)).toFixed(2)+' &#8381; </td>'+
@@ -47,9 +46,10 @@ $(document).on('click', ".increase_count", function(){
 
 	totalCost = Math.round(totalCost);
 
+	$('#total_main').html(totalCost + '  &#8381;');
+	$('#grocery-price').html(totalCost);
+	$('#cart-price').html(totalCost + 50);
 
-	$('#cart-price').html(totalCost);
-	$('#total_main').html(totalCost + '&#8381;');
 
 	// $( "iframe" ).attr({
 	//   src: "https://money.yandex.ru/embed/small.xml?account=410013034873931&quickpay=small&any-card-payment-type=on&button-text=02&button-size=l&button-color=orange&targets=expfood&default-sum="+totalCost+"&successURL=",
@@ -77,14 +77,26 @@ $(document).on('click', ".reduce_count", function(){
 		return value; 
 	});
 
+	// newItem = (
+	// 			'<tr class="ordered-item" id="cart-'+$(this).closest('.product').attr('id')+'"> '+
+	// 				'<td class="image">'+ $(this).closest('.product').children('img')[0].outerHTML + '</td>' +
+	// 				'<td class="name">'+$(this).closest('.product').find('.product-name').html()+'</td>' +
+	// 				'<td class="price">'+parseFloat($(this).closest('.product').find('.product-price').html())+' &#8381;</td>' +
+	// 				'<td class="quantity"> x '+value+'</td>' +
+	// 				'<td class="total"> = '+ (parseFloat($(this).closest('.product').find('.product-price').html())*parseFloat(value)).toFixed(2)+'</td>'+
+	// 			'</tr>');
+
+
 	newItem = (
 				'<tr class="ordered-item" id="cart-'+$(this).closest('.product').attr('id')+'"> '+
-					'<td class="image">'+ $(this).closest('.product').children('img')[0].outerHTML + '</td>' +
+					'<td class="image"> <span class="helper"></span>'+ $(this).closest('.product').find('img')[0].outerHTML + '</td>' +
 					'<td class="name">'+$(this).closest('.product').find('.product-name').html()+'</td>' +
 					'<td class="price">'+parseFloat($(this).closest('.product').find('.product-price').html())+' &#8381;</td>' +
 					'<td class="quantity"> x '+value+'</td>' +
-					'<td class="total"> = '+ (parseFloat($(this).closest('.product').find('.product-price').html())*parseFloat(value)).toFixed(2)+'</td>'+
+					'<td class="total"> = '+ (parseFloat($(this).closest('.product').find('.product-price').html())*parseFloat(value)).toFixed(2)+' &#8381; <?php echo $user_data["user_id"]; ?></td>'+
 				'</tr>');
+
+
 	var itemId = $(this).closest('.product');
 
 	$("#cart-"+ itemId.attr('id')).remove();
@@ -109,9 +121,20 @@ $(document).on('click', ".reduce_count", function(){
 
 	totalCost = totalCost - parseFloat($(this).closest('.product').find('.product-price').html());
 
-	$('#cart-price').html(totalCost.toFixed(2));
-	$('#total_main').html(totalCost.toFixed(2) + '  &#8381;');
+	totalCost = Math.round(totalCost);
 
+
+
+	$('#total_main').html(totalCost + '  &#8381;');
+	$('#grocery-price').html(totalCost);
+	$('#cart-price').html(totalCost + 50);
+
+
+	var inputOrder = document.getElementById("inputOrder");
+	inputOrder.value = $("#cart-items").html();
+
+	var inputCost = document.getElementById("inputCost");
+	inputCost.value = totalCost;
 
 
 	// $( "iframe" ).attr({

@@ -68,8 +68,17 @@ if (logged_in() === false)  {
 
 <form class="form-horizontal" name="sentMessage" id="contactForm" novalidate action="" method="post"> 
 
+	<div class="form-group">  
+	<label for="inputAddress" class="col-sm-2 control-label">
+	</label> 
+	<div class="col-sm-10" id="order_text"> 
+	Пожалуйста, заполните информацию снизу, <br> чтобы мы могли доставить Ваш заказ уже меньше чем через 1 час!
+	
+	</div> 
+	</div> 
+
 	<div class="form-group"> 
-	<label for="inputAddress" class="col-sm-2 control-label">Ваше имя 
+	<label for="inputAddress" class="col-sm-2 control-label">Ваше имя *
 	</label> 
 	<div class="col-sm-10"> 
 	<input type="text" required value="<?php fill_input('first_name'); ?>" class="form-control" name="first_name" placeholder="Например Маша" id="name">
@@ -78,7 +87,7 @@ if (logged_in() === false)  {
 	</div> 
 
 	<div class="form-group"> 
-	<label for="inputMobile" required class="col-sm-2 control-label">Номер мобильного
+	<label for="inputMobile" required class="col-sm-2 control-label">Номер мобильного *
 	</label> 
 	<div class="col-sm-10"> 
 	<input type="tel" required class="form-control" value="<?php fill_input('phone'); ?>" name="phone" placeholder="В формате 8 *** *** ** **" id="phone">
@@ -88,7 +97,7 @@ if (logged_in() === false)  {
 
 
 	<div class="form-group"> 
-	<label for="inputName"  class="col-sm-2 control-label">Город
+	<label for="inputName"  class="col-sm-2 control-label">Город *
 	</label> 
 	<div class="col-sm-10"> 
 	<input type="text" value="<?php fill_input('city'); ?>" name="city" class="form-control" placeholder="Одинцово" id="email">
@@ -97,7 +106,7 @@ if (logged_in() === false)  {
 	</div> 
 
 	<div class="form-group"> 
-	<label for="inputName"  class="col-sm-2 control-label">Улица
+	<label for="inputName"  class="col-sm-2 control-label">Улица *
 	</label> 
 	<div class="col-sm-10"> 
 	<input type="text"  value="<?php fill_input('street'); ?>" required class="form-control" name="street" placeholder="Маковского" id="email">
@@ -106,7 +115,7 @@ if (logged_in() === false)  {
 	</div> 
 
 	<div class="form-group"> 
-	<label for="inputName"  class="col-sm-2 control-label">Дом
+	<label for="inputName"  class="col-sm-2 control-label">Дом *
 	</label> 
 	<div class="col-sm-10">
 	<input type="text"  value="<?php fill_input('house'); ?>" required class="form-control" name="house" placeholder="2" id="email">

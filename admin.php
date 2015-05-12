@@ -20,7 +20,7 @@ mysql_set_charset("utf8");
 
 
 
-$result = mysql_query("SELECT * FROM orders");
+$result = mysql_query("SELECT * FROM orders WHERE paid = 1");
 
 
 
@@ -37,6 +37,7 @@ while($row = mysql_fetch_row($result))
 		$user_id = $row[3];
 		$user_info = order_user_info($user_id);
 		mysql_query("UPDATE `orders` SET `user_info` = '$user_info' WHERE user_id = $user_id");
+		mysql_query("UPDATE `orders_archive` SET `user_info` = '$user_info' WHERE user_id = $user_id");
 
 		echo "<a href='?" . $row[0] . "'>Удалить нижний заказ</a><br><br>";
 	    echo "$row[0]";
@@ -73,48 +74,6 @@ while($row = mysql_fetch_row($result))
 <div class="page-container">
 
 
-	<?php
-	// output_orderList($orderList);
-	// echo output_orderList($orderList);
-	// echo count($orderList);
-	// $user_data2 = user_data(1, 'username', 'city', 'street', 'house', 'flat', 'entrance', 'first_name', 'phone', 'extra');
-	// echo user_data(1, 'username', 'city', 'street', 'house', 'flat', 'entrance', 'first_name', 'phone', 'extra')['username'];
-
-	// for ($x = 0; $x < count($order_all); $x++) {
-	// 	if (isset($_GET[$x]) && empty($_GET[$x])) {
-	// 		$current_order_id = $order_ids_all[$x];
-	// 		mysql_query("DELETE FROM orders WHERE order_id = $current_order_id");
-	// 	}
-	//     echo "<a href='?" . $x . "'>Удалить нижний заказ</a><br><br>";
-	//     echo $order_all[$x];		    
-	// }
-	while($row = mysql_fetch_row($result))
-	{
-		// if (isset($_GET[$x]) && empty($_GET[$x])) {
-		// 	$current_order_id = $row[0];
-		// 	mysql_query("DELETE FROM orders WHERE order_id = $current_order_id");
-		// }
-	    // echo "<a href='?" . $row[0] . "'>Удалить нижний заказ</a><br><br>";
-	    // echo "$row[0]";
-	    // echo "$row[4]";
-	    // echo "$row[1]";
-	}
-	// echo output_errors($errors);
-
-
-
-	
-
-
-
-	// if (empty($_POST) === false) {
-	// $order_id = $_GET['username'];
-	// }
-
-
-
-
-	?>
 
 		
 </div>

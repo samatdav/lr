@@ -74,7 +74,7 @@ function codeAddress() {
 
                 flag = true;
                 var mwords = document.getElementById("map-words");
-                mwords.innerHTML = '<div class="slimbox"> <h1>Мы работаем для тебя!</h1> <h2>Зарегистрируйся и получи бесплатную доставку на первый заказ!</h2> <form class="form-group" method="post"> <div class="form-group"> <input required type="email" name="email" class="form-control" id="exampleInputEmail1" placeholder="Email"> </div> <div class="form-group"> <input required type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password"> </div> <div class="hidden"> <input type="text" name="city" id="inputCity"> </div> <div class="hidden"> <input type="text" name="street" id="inputStreet"> </div> <div class="hidden"> <input type="text" name="house" id="inputHouse"> </div> <input type="submit" class="btn-signin btn btn-primary btn-block" value="ЗАРЕГИСТРИРОВАТЬСЯ"> </form>  <p> Уже есть аккаунт? <a class="signup" href="signin.html">Войти</a> </p> </div> </div><style>#map-canvas { opacity: 0.5; } #map-words {height: 100%;}</style>';
+                mwords.innerHTML = '<div class="slimbox"> <h1>Мы работаем для тебя!</h1> <h2>Зарегистрируйся и получи бесплатную доставку на первый заказ!</h2> <form class="form-group" method="post"> <div class="form-group"> <input required type="email" name="email" class="form-control" id="exampleInputEmail1" placeholder="Email"> </div> <div class="form-group"> <input required type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password"> </div> <div class="hidden"> <input type="text" name="city" id="inputCity"> </div> <div class="hidden"> <input type="text" name="street" id="inputStreet"> </div> <div class="hidden"> <input type="text" name="house" id="inputHouse"> </div> <input type="submit" class="btn-signin btn btn-primary btn-block" value="РЕГИСТРАЦИЯ"> </form>  <p> Уже есть аккаунт? <a class="signup" href="signin.html">Войти</a> </p> </div> </div><style>#map-canvas { opacity: 0.5; } #map-words {height: 100%;}</style>';
 
                 inputAddress();
 
@@ -86,7 +86,7 @@ function codeAddress() {
                 console.log(results[0].address_components[0].long_name);
                 flag = false;
                 var mwords = document.getElementById("map-words");
-                mwords.innerHTML = '<div class="slimbox"> <h1>Мы уже скоро будем тут!</h1> <h2>Оставь свой имейл и мы тебе сразу сообщим об открытии!</h2> <form>  <div class="form-group"> <input required type="email" class="form-control" id="exampleInputEmail1" placeholder="Email"> </div> <button type="submit" class="btn-signin btn btn-primary btn-block">Оставить Email</button> </form>  <p> Уже есть аккаунт? <a class="signup" href="signin.html">Войти</a> </p> </div> </div><style>#map-canvas { opacity: 0.5; } #map-words {height: 100%;}</style>';
+                mwords.innerHTML = '<div class="slimbox"> <h1>Мы уже скоро будем тут!</h1> <h2>Оставь свой имейл и мы тебе сразу сообщим об открытии!</h2> <form>  <div class="form-group"> <input required type="email" class="form-control" id="exampleInputEmail1" placeholder="Email"> </div> <button type="submit" class="btn-signin btn btn-primary btn-block">Оставить Email</button> </form>  <p> Уже есть аккаунт? <a class="signup" href="signin.php">Войти</a> </p> </div> </div><style>#map-canvas { opacity: 0.5; } #map-words {height: 100%;}</style>';
             }
     } else {
       alert('Пожалуйста, введите свой адрес сверху страницы и нажмите Enter');
@@ -112,6 +112,9 @@ $("html").keypress(function(e) {
     }
 });
 
+$("html").mousedown(function() {
+
+}
 // var isDown = false;
 
 // $(".header").mousedown(function(){
