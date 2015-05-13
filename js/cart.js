@@ -77,16 +77,6 @@ $(document).on('click', ".reduce_count", function(){
 		return value; 
 	});
 
-	// newItem = (
-	// 			'<tr class="ordered-item" id="cart-'+$(this).closest('.product').attr('id')+'"> '+
-	// 				'<td class="image">'+ $(this).closest('.product').children('img')[0].outerHTML + '</td>' +
-	// 				'<td class="name">'+$(this).closest('.product').find('.product-name').html()+'</td>' +
-	// 				'<td class="price">'+parseFloat($(this).closest('.product').find('.product-price').html())+' &#8381;</td>' +
-	// 				'<td class="quantity"> x '+value+'</td>' +
-	// 				'<td class="total"> = '+ (parseFloat($(this).closest('.product').find('.product-price').html())*parseFloat(value)).toFixed(2)+'</td>'+
-	// 			'</tr>');
-
-
 	newItem = (
 				'<tr class="ordered-item" id="cart-'+$(this).closest('.product').attr('id')+'"> '+
 					'<td class="image"> <span class="helper"></span>'+ $(this).closest('.product').find('img')[0].outerHTML + '</td>' +

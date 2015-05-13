@@ -76,6 +76,14 @@ ul, ol
 	padding:0px;
 	background:#f5f5f5;
 }
+.number {
+	font-size: 20px;
+	position: relative;
+	right: 50px;
+	top: -4px;
+	font-weight: 400;
+	font-family: calibri;
+}
 
 p
 {
@@ -1322,7 +1330,7 @@ ul.slides
 .product .name
 {
     text-align:left;
-    max-height: 48px;
+    max-height: 43px;
     overflow: hidden;
     position: relative;  
     top: 0px;
@@ -1336,7 +1344,7 @@ ul.slides
     font-family:'Open Sans', Arial,Montserrat;
 	font-size:12px;
 	text-transform:uppercase;
-	line-height: 15px;
+	line-height: 13px;
 }
 /*.product .name a:hover
 {
@@ -1347,10 +1355,13 @@ ul.slides
 {
     text-align:left;
     margin:0px;
+    position:absolute;
+    left:11px;
+    bottom:4px;
 }
 .product .price p  
 {
-   font-size:20px;
+   font-size:16px;
    color:#666;
    font-family: sans-serif;
    margin:0px;
@@ -2560,8 +2571,8 @@ td.image
 
 .product-howmuch {
 	position: absolute;
-	left: 10px;
-	bottom: 32px;
+	left: 11px;
+	bottom: 30px;
 	font-size: 12px;
 	color: #999;
 	font-weight: 600;

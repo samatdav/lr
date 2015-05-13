@@ -51,12 +51,14 @@ if (logged_in() === false)  {
 					  	Отследить Заказ
 					  	</a>
 					  </li> -->
+					  <!-- <li class="number">+7 925 044 74 37</li> -->
 
 					  <li class="shop">
+
 					  		<img src="img/ver2.png">
 					  		Верный
 					  		<?php
-					  		echo $user_data['username'];
+					  		// echo $user_data['username'];
 					  		?>
 					  </li>
                       </ul>
@@ -148,51 +150,16 @@ if (logged_in() === false)  {
 		
 		<div id="item-wrap-inner" class="col-xs-10 products-wrap">
 
-
-<?php
-// if (isset($_GET['success']) && empty($_GET['success'])) {
-// 		echo "You have registered!";
-// 	}
-if (isset($_GET['fresh'])) {
-	$category = 'FruitAndVegetables';
-} elseif (isset($_GET['dairy'])) {
-	$category = 'dairy';
-} elseif (isset($_GET['Snacks'])) {
-	$category = 'Snacks';
-} elseif (isset($_GET['drinks'])) {
-	$category = 'Drinks';
-// } elseif (isset($_GET['meat'])) {
-// 	$category = 'dairy';
-// } elseif (isset($_GET['meat'])) {
-// 	$category = 'dairy';
-// } elseif (isset($_GET['meat'])) {
-// 	$category = 'dairy';
-// } elseif (isset($_GET['meat'])) {
-// 	$category = 'dairy';
-} else {
-	$category = 'FruitAndVegetables';
-}
-
-// $result = mysql_query("SELECT * FROM products WHERE category = '$category'");
-// while($row = mysql_fetch_row($result))
-// {
- //    echo "<tr>";
- //    // echo "<td>$row[0]</td>";
- //    for ($x = 0; $x < 7; $x++) {
-	//     echo "<td>$row[$x]</td>";		    
-	// }
- //    echo "</tr><br>";
-
-// echo '<div class="product-wrap"> <div class="product" id="' . $row[0] . '">  <div class="product_img"> <span class="helper"></span> <img class="" src="' . $row[3] . '">  </div> <button class="item_count btn count btn-dark-blue btn-small-med btn-trans">0</button> <div class="action"> <div> <button href="javascript:void(0)" class="reduce_count btn minus btn-dark-blue btn-small-med btn-trans">-</button> <button href="javascript:void(0)" class="increase_count btn add btn-dark-blue btn-small-med btn-trans">Добавить</button> </div> </div> <div class="desc"> <div class="name"> <p class="product-name">' . $row[2] . '</p> </div>  <div class="price"> <p class="product-price">' . $row[4] . ' руб</p> </div> </div> </div> </div>';
-
-// }
-?>
-
 	  	 </div>
 	 </div>	
-	</div>		
+	</div>
+
+<!-- 	<footer>
+		asdfasdf
+	</footer>	 -->	
 	
 </div>
+
 
 
 <script type="text/javascript" src="js/bootstrap-select.min.js"></script>
@@ -202,6 +169,8 @@ if (isset($_GET['fresh'])) {
 <script type="text/javascript" src="js/cart.js"></script>
 <script type="text/javascript" src="js/categories.js"></script>
 <script type="text/javascript" src="js/order.js"></script>
+
+
 
 </body>
 </html>

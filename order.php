@@ -90,7 +90,7 @@ if (logged_in() === false)  {
 	<label for="inputMobile" required class="col-sm-2 control-label">Номер мобильного *
 	</label> 
 	<div class="col-sm-10"> 
-	<input type="tel" required class="form-control" value="<?php fill_input('phone'); ?>" name="phone" placeholder="В формате 8 *** *** ** **" id="phone">
+	<input type="tel" required class="form-control" value="<?php fill_input('phone'); ?>" name="phone" placeholder="" id="ssn">
     <p class="help-block text-danger"></p>
 	</div> 
 	</div> 

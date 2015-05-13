@@ -112,36 +112,33 @@ $("html").keypress(function(e) {
     }
 });
 
-$("html").mousedown(function() {
+$('#logo_text').click(function () {
+      alert('asfsdfsdfsdf');
+      // codeAddress();
+    });
 
-}
-// var isDown = false;
+// function inputAddress() {
+//   window.setInterval(function(){
+//     $('.pac-container').click(function () {
+//       alert('asfsdfsdfsdf');
+//       // codeAddress();
+//     });
+//   }, 5000);
+// }
 
-// $(".header").mousedown(function(){
-//     isDown = true;
-// });
-
-// $(document).mouseup(function(){
-//     if(isDown){
-//         alert("123");
-//         isDown = false;
-//     }
-// }); 
-
-// $("body").mouseover(function(){
-//     alert("123");
-// });
-
-// $('body').on('mousedown', '.enemy', function(event) {
-
-//     alert("123");
-
-// });
+// inputAddress();
 
 
-// $(document).on('click', ".increase_count", function(){
-//     codeAddress();
-// });
+$("#logo_text").click(function () {
+      alert('asfsdfsdfsdf');
+      // codeAddress();
+});
+// window.setInterval(function(){
+//   $('.logo').click(function () {
+//     // codeAddress();
+//     alert('SFD');
+//   });
+// }, 1000);
 
 google.maps.event.addDomListener(window, 'load', initialize);
 

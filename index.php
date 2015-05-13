@@ -36,6 +36,7 @@ if (empty($_POST) === false) {
 	    <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
 	    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
 	    <script type="text/javascript" src="js/gmaps.js"></script>
+	    <script type="text/javascript" src="js/script.js"></script>
 		<title>Express Food</title>
 	</head>
 

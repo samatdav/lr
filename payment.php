@@ -51,11 +51,11 @@ while($row = mysql_fetch_assoc($result)) {
 
 $echo_grocery_cost = $cost_all[count($cost_all)-1];
 
-if ($echo_grocery_cost < 1000) {
-	$deliveryCost = 50;
-} else {
-	$deliveryCost = 0;
-}
+// if ($echo_grocery_cost < 1000) {
+// 	$deliveryCost = 50;
+// } else {
+// 	$deliveryCost = 0;
+// }
 
 $echo_total_cost = $echo_grocery_cost + $deliveryCost;
 
